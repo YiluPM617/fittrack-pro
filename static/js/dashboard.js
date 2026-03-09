@@ -3,11 +3,16 @@ if (weightCtx) {
     new Chart(weightCtx, {
         type: 'line',
         data: {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+            labels: typeof weightLabels !== 'undefined' ? weightLabels : [],
             datasets: [{
                 label: 'Weight (kg)',
-                data: [73.2, 73.0, 72.9, 72.7, 72.5]
+                data: typeof weightData !== 'undefined' ? weightData : [],
+                tension: 0.3
             }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true
         }
     });
 }
@@ -21,6 +26,10 @@ if (macroCtx) {
             datasets: [{
                 data: [120, 180, 50]
             }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true
         }
     });
 }

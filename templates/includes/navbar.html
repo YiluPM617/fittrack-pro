@@ -11,18 +11,36 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'dashboard:home' %}">Dashboard</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'tracker:food_add' %}">Food Log</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'tracker:exercise_add' %}">Exercise Log</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'tracker:weight_add' %}">Weight Log</a>
                 </li>
+
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <form action="{% url 'accounts:logout' %}" method="post" class="m-0">
+				{% csrf_token %}
+				<button type="submit" class="nav-link bg-transparent border-0">
+					Logout
+				</button>
+			</form>
+                </li>
+                {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>

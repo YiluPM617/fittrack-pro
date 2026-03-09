@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %}Exercise Log | FitTrack Pro{% endblock %}
+{% block title %}Exercise Log{% endblock %}
 
 {% block content %}
 <h1 class="mb-4">Add Exercise Entry</h1>
+
 <div class="card shadow-sm p-4">
-    <p>This is the exercise log page.</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">
+            Add Exercise
+        </button>
+    </form>
 </div>
 {% endblock %}

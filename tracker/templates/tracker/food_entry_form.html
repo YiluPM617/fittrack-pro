@@ -1,10 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}Food Log | FitTrack Pro{% endblock %}
+{% block title %}Food Log{% endblock %}
 
 {% block content %}
+
 <h1 class="mb-4">Add Food Entry</h1>
+
 <div class="card shadow-sm p-4">
-    <p>This is the food log page.</p>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">
+        Add Food
+    </button>
+
+</form>
+
 </div>
+
 {% endblock %}

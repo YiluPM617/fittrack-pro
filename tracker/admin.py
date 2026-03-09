@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import FoodEntry, ExerciseEntry, WeightLog
 
-# Register your models here.
+
+admin.site.register(FoodEntry)
+admin.site.register(ExerciseEntry)
+admin.site.register(WeightLog)

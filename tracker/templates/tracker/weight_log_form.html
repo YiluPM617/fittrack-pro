@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %}Weight Log | FitTrack Pro{% endblock %}
+{% block title %}Weight Log{% endblock %}
 
 {% block content %}
 <h1 class="mb-4">Add Weight Log</h1>
+
 <div class="card shadow-sm p-4">
-    <p>This is the weight log page.</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">
+            Add Weight
+        </button>
+    </form>
 </div>
 {% endblock %}

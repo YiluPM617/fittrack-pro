@@ -14,3 +14,21 @@ body {
 h1, h2, h3 {
     font-weight: 700;
 }
+
+.nav-link.btn.btn-link {
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+}
+
+.nav-link.btn.btn-link:hover {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.navbar form {
+    display: flex;
+    align-items: center;
+}
+
+.navbar button.nav-link {
+    padding: 8px 16px;
+}

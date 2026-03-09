@@ -66,5 +66,9 @@
 {% endblock %}
 
 {% block extra_js %}
+<script>
+    const weightLabels = {{ weight_labels|safe }};
+    const weightData = {{ weight_data|safe }};
+</script>
 <script src="{% static 'js/dashboard.js' %}"></script>
 {% endblock %}
