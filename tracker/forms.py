@@ -13,6 +13,14 @@ class FoodEntryForm(forms.ModelForm):
             "fat_g",
             "meal_type",
         ]
+        widgets = {
+            "food_name": forms.TextInput(attrs={"class": "form-control"}),
+            "calories": forms.NumberInput(attrs={"class": "form-control"}),
+            "protein_g": forms.NumberInput(attrs={"class": "form-control"}),
+            "carbs_g": forms.NumberInput(attrs={"class": "form-control"}),
+            "fat_g": forms.NumberInput(attrs={"class": "form-control"}),
+            "meal_type": forms.Select(attrs={"class": "form-select"}),
+        }
 
 
 class ExerciseEntryForm(forms.ModelForm):
@@ -23,6 +31,11 @@ class ExerciseEntryForm(forms.ModelForm):
             "duration_minutes",
             "calories_burned",
         ]
+        widgets = {
+            "exercise_name": forms.TextInput(attrs={"class": "form-control"}),
+            "duration_minutes": forms.NumberInput(attrs={"class": "form-control"}),
+            "calories_burned": forms.NumberInput(attrs={"class": "form-control"}),
+        }
 
 
 class WeightLogForm(forms.ModelForm):
@@ -31,3 +44,6 @@ class WeightLogForm(forms.ModelForm):
         fields = [
             "weight_kg",
         ]
+        widgets = {
+            "weight_kg": forms.NumberInput(attrs={"class": "form-control"}),
+        }

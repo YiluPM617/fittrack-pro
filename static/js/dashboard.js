@@ -7,12 +7,48 @@ if (weightCtx) {
             datasets: [{
                 label: 'Weight (kg)',
                 data: typeof weightData !== 'undefined' ? weightData : [],
-                tension: 0.3
+                tension: 0.3,
+                fill: false,
+                pointRadius: 5,
+                pointHoverRadius: 8,
+                pointHitRadius: 12
             }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: true
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'nearest',
+                intersect: true
+            },
+            plugins: {
+                tooltip: {
+                    enabled: true,
+                    callbacks: {
+                        label: function(context) {
+                            return `Weight: ${context.raw} kg`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+const calorieCtx = document.getElementById('calorieChart');
+if (calorieCtx) {
+    new Chart(calorieCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Calories In', 'Calories Out', 'Net Calories'],
+            datasets: [{
+                label: 'Calories',
+                data: [caloriesIn, caloriesOut, netCalories]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
         }
     });
 }
@@ -24,7 +60,7 @@ if (macroCtx) {
         data: {
             labels: ['Protein', 'Carbs', 'Fat'],
             datasets: [{
-                data: [120, 180, 50]
+                data: [protein, carbs, fat]
             }]
         },
         options: {

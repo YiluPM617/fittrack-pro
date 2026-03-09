@@ -4,7 +4,12 @@
 {% block title %}Dashboard | FitTrack Pro{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">Dashboard</h1>
+<div class="dashboard-hero mb-4">
+    <div class="hero-overlay">
+        <h1 class="mb-1">Dashboard</h1>
+        <p class="mb-0">{{ today_date }}</p>
+    </div>
+</div>
 
 <div class="row g-4 mb-4">
     <div class="col-md-3">
@@ -45,8 +50,8 @@
 </div>
 
 <div class="row g-4">
-    <div class="col-lg-6">
-        <div class="card shadow-sm">
+    <div class="col-lg-4 col-md-6">
+        <div class="card shadow-sm chart-card">
             <div class="card-body">
                 <h5 class="card-title">Weight Trend</h5>
                 <canvas id="weightChart"></canvas>
@@ -54,8 +59,17 @@
         </div>
     </div>
 
-    <div class="col-lg-6">
-        <div class="card shadow-sm">
+    <div class="col-lg-4 col-md-6">
+        <div class="card shadow-sm chart-card">
+            <div class="card-body">
+                <h5 class="card-title">Calorie Balance</h5>
+                <canvas id="calorieChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-12">
+        <div class="card shadow-sm chart-card">
             <div class="card-body">
                 <h5 class="card-title">Macro Breakdown</h5>
                 <canvas id="macroChart"></canvas>
@@ -69,6 +83,14 @@
 <script>
     const weightLabels = {{ weight_labels|safe }};
     const weightData = {{ weight_data|safe }};
+
+    const caloriesIn = {{ calories_in }};
+    const caloriesOut = {{ calories_out }};
+    const netCalories = {{ net_calories }};
+
+    const protein = {{ protein_total }};
+    const carbs = {{ carbs_total }};
+    const fat = {{ fat_total }};
 </script>
 <script src="{% static 'js/dashboard.js' %}"></script>
 {% endblock %}

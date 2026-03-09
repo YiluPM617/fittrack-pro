@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from tracker.models import FoodEntry, ExerciseEntry, WeightLog
 import json
+from datetime import datetime
 
 
 @login_required
@@ -16,8 +17,12 @@ def dashboard_view(request):
     net_calories = calories_in - calories_out
     current_weight = latest_weight.weight_kg if latest_weight else 0
 
-    weight_labels = [log.logged_at.strftime("%b %d") for log in weight_logs]
+    weight_labels = [log.logged_at.strftime("%H:%M") for log in weight_logs]
     weight_data = [log.weight_kg for log in weight_logs]
+	
+    protein_total = sum(entry.protein_g for entry in food_entries)
+    carbs_total = sum(entry.carbs_g for entry in food_entries)
+    fat_total = sum(entry.fat_g for entry in food_entries)
 
     context = {
         "calories_in": calories_in,
@@ -26,6 +31,10 @@ def dashboard_view(request):
         "current_weight": current_weight,
         "weight_labels": json.dumps(weight_labels),
         "weight_data": json.dumps(weight_data),
+	"protein_total": protein_total,
+	"carbs_total": carbs_total,
+	"fat_total": fat_total,
+	"today_date": datetime.now().strftime("%A, %d %B %Y"),
     }
 
     return render(request, "dashboard/dashboard.html", context)
