@@ -69,16 +69,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'fittrack_pro.wsgi.application'
 
 import os
+import dj_database_url
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("POSTGRES_DB"),
-        "USER": os.environ.get("POSTGRES_USER"),
-        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-        "HOST": os.environ.get("POSTGRES_HOST"),
-        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
-    }
+    "default": dj_database_url.parse(os.environ["DATABASE_URL"])
 }
 
 AUTH_PASSWORD_VALIDATORS = [
