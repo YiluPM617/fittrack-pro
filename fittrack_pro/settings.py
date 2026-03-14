@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-+%fsq5s6#xap165kb0xpweq-wo9jf$fknvz2r4vsr@cy1fvv#d'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "fittrackpro.applikuapp.com",
@@ -68,10 +68,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fittrack_pro.wsgi.application'
 
+import os
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("POSTGRES_DB"),
+        "USER": os.environ.get("POSTGRES_USER"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "HOST": os.environ.get("POSTGRES_HOST"),
+        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
     }
 }
 
