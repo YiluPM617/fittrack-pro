@@ -125,3 +125,5 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'dashboard:home'
 LOGOUT_REDIRECT_URL = 'accounts:login'
+
+CSRF_TRUSTED_ORIGINS = ['https://fittrackpro.applikuapp.com/']
