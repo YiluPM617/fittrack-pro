@@ -35,6 +35,7 @@ def dashboard_view(request):
 	"carbs_total": carbs_total,
 	"fat_total": fat_total,
 	"today_date": datetime.now().strftime("%A, %d %B %Y"),
+	"app_version": "csrf-fix-v2",
     }
 
     return render(request, "dashboard/dashboard.html", context)
