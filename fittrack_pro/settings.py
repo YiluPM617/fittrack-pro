@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+%fsq5s6#xap165kb0xpweq-wo9jf$fknvz2r4vsr@cy1fvv#d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["fittrackpro.applikuapp.com"]
 
