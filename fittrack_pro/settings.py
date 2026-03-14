@@ -25,8 +25,15 @@ SECRET_KEY = 'django-insecure-+%fsq5s6#xap165kb0xpweq-wo9jf$fknvz2r4vsr@cy1fvv#d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["fittrackpro.applikuapp.com"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "fittrackpro.applikuapp.com",
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://fittrackpro.applikuapp.com",
+]
 
 # Application definition
 
